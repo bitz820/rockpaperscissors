@@ -16,37 +16,73 @@ console.log(computerChoice);
 
 let userAnswer = prompt("Rock, Paper, or Scissors?").toLowerCase();
 console.log(userAnswer);
-let computerAnswer = computerChoice;
-console.log(computerAnswer);
+const options = ["rock", "paper", "scissors"];
+let userWins = 0;
+let computerWins = 0;
 
-//if userAnswer = computerAnswer
+function playRound(){
 
-    function playRound (userAnswer, computerAnswer){
-        let answer;
-        if (userAnswer === "rock" && computerAnswer === "paper"){
-            answer = ("paper beats rock, you lose!");
-        }else if (userAnswer === "rock" && computerAnswer === "scissors"){
-            answer =  ("rock beats scissors! you win!")
-        }else if (userAnswer === "scissors" && computerAnswer === "paper"){
-            answer = ("scissors beats paper! you win!")
-        }else if (userAnswer === "scissors" && computerAnswer === "rock"){
-            answer = ("rock beats scissors, you lose!")
-        }else if (userAnswer === "paper" && computerAnswer === "scissors"){
-            answer = ("scissors beats paper, you lose!")
-        }else if (userAnswer === "paper" && computerAnswer === "rock"){
-            answer = ("paper beats rock! you win!")
-        }else if (userAnswer === computerAnswer){
-            answer = ("Tie! play again");
-        }else{
-            answer = ("Unknown error has occured!");
+    function computerChoice (){
+        return options[Math.floor(Math.random()*options.length)];
+    }
+    let computerWeapon = computerChoice();
+
+    console.log(computerWeapon);
+    //have ensured above that computer choice randomly generates one of the three string
+    //must next create a user input to have a second value to compare
+
+    userWeapon = prompt("Rock, Paper, or Scissors?", "Enter weapon choice NOW!").toLowerCase()
+    //user input created and stored.  Must now use the two comparatively in a round mode
+    //create function for play round and determine the outcome
+
+
+        if (userWeapon === "rock" && computerWeapon === "scissors" ||
+        userWeapon === "paper" && computerWeapon === "rock" ||
+        userWeapon === "scissors" && computerWeapon === "paper") {
+            alert("Congrats you win this round!");
+            userWins++;
+        }else if (
+        userWeapon === "rock" && computerWeapon === "paper" ||
+        userWeapon === "paper" && computerWeapon === "scissors" ||
+        userWeapon === "scissors" && computerWeapon === "rock") {
+            alert("Sorry, you didn't win this round!");
+            computerWins++;
+        }else if (userWeapon == computerWeapon){
+            alert("Tie! Play the round again!");
+            playRound();
+        } else {
+            alert("Sorry an unexpected error has occurred!");
+            playRound();
         };
-        alert(answer);
-        return(answer);
-       
-    };
 
-    console.log(playRound(userAnswer, computerAnswer))
+}
+//playRound();
+//ensured that the two can compare effectively under all circumstances. now to loop or create a function to run five times and add a counter and then determine winner
+//
 
+function gamePlay () {
+    playRound();
+    console.log(userWins);
+    console.log(computerWins);
 
+    playRound();
+    console.log(userWins);
+    console.log(computerWins);
 
+    playRound();
+    console.log(userWins);
+    console.log(computerWins);
 
+    playRound();
+    console.log(userWins);
+    console.log(computerWins);
+
+    playRound();
+    console.log(userWins);
+    console.log(computerWins);
+
+    let winner = (userWins > computerWins) ? "Congratulations you win the game!" : "Sorry try your luck again to beat the computer!";
+    alert(winner)
+}
+
+gamePlay();
