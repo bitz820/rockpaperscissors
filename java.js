@@ -1,21 +1,3 @@
-// I want to begin with a function "computerPlay" 
-//will randomly return either Rock, Paper or Scissors
-let choices = ["rock", "paper" , "scissors"];
-let computerChoice = choices[Math.floor(Math.random()*choices.length)];
-function computerPlay(){
-    return computerChoice;
-};
-console.log(computerChoice);
-
-
-//write a function that plays a single round of rock paper scissors
-// ask user for input rock paper or scissors
-//define rock > scissors; scissors > paper; paper > rock;
-// check this against computerChoice 
-//return outcome
-
-let userAnswer = prompt("Rock, Paper, or Scissors?").toLowerCase();
-console.log(userAnswer);
 const options = ["rock", "paper", "scissors"];
 let userWins = 0;
 let computerWins = 0;
