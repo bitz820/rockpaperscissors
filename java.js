@@ -2,7 +2,12 @@ const options = ["rock", "paper", "scissors"];
 let userWins = 0;
 let computerWins = 0;
 
-function playRound(){
+
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', )
+
+
+/* function playRound(){
 
     function computerChoice (){
         return options[Math.floor(Math.random()*options.length)];
@@ -38,11 +43,11 @@ function playRound(){
         };
 
 }
-//playRound();
+ *///playRound();
 //ensured that the two can compare effectively under all circumstances. now to loop or create a function to run five times and add a counter and then determine winner
 //
 
-function gamePlay () {
+/* function gamePlay () {
     playRound();
     console.log(userWins);
     console.log(computerWins);
@@ -68,3 +73,4 @@ function gamePlay () {
 }
 
 gamePlay();
+ */
