@@ -1,53 +1,59 @@
 const options = ["rock", "paper", "scissors"];
 let userWins = 0;
 let computerWins = 0;
+/////////DOM ELEMENTS TO CREATE AND THEN CAN CALL AND REFERENCE
+let resultsH4 = document.getElementById('results');
+let userWinCount = document.getElementById('user-win-count');
+let computerWinCount = document.getElementById('computer-win-count');
+////////////
+let displayResults;
+let computerWeapon;
+let userWeapon;
 
 
-const btn = document.querySelector('#btn');
-btn.addEventListener('click', )
+function assignUserWeapon(e) {
+    userWeapon = e.target.id;
+    // console.log(userWeapon);
+    playRound()
+};
 
+//This chooses which choice the computer wants at random.
+function assignComputerWeapon() {
+    computerWeapon = options[Math.floor(Math.random() * options.length)];
+}
+//set a variable to always be assigned to this function
 
-/* function playRound(){
-
-    function computerChoice (){
-        return options[Math.floor(Math.random()*options.length)];
-    }
-    let computerWeapon = computerChoice();
-
-    console.log(computerWeapon);
-    //have ensured above that computer choice randomly generates one of the three string
-    //must next create a user input to have a second value to compare
-
-    userWeapon = prompt("Rock, Paper, or Scissors?", "Enter weapon choice NOW!").toLowerCase()
-    //user input created and stored.  Must now use the two comparatively in a round mode
-    //create function for play round and determine the outcome
-
-
-        if (userWeapon === "rock" && computerWeapon === "scissors" ||
+//set a function to compare userWeapon and computerWeapon
+//BLUEPRINTS ON WHAT TO DO 
+function playRound() {
+    if (userWeapon === "rock" && computerWeapon === "scissors" ||
         userWeapon === "paper" && computerWeapon === "rock" ||
         userWeapon === "scissors" && computerWeapon === "paper") {
-            alert("Congrats you win this round!");
-            userWins++;
-        }else if (
+        resultsH4.innerText = "Congrats you win this round!";
+        userWins++;
+        userWinCount.innerText = "User Wins:" + userWins
+        computerWinCount.innerText = "Computer Wins:" + computerWins;
+    } else if (
         userWeapon === "rock" && computerWeapon === "paper" ||
         userWeapon === "paper" && computerWeapon === "scissors" ||
         userWeapon === "scissors" && computerWeapon === "rock") {
-            alert("Sorry, you didn't win this round!");
-            computerWins++;
-        }else if (userWeapon == computerWeapon){
-            alert("Tie! Play the round again!");
-            playRound();
-        } else {
-            alert("Sorry an unexpected error has occurred!");
-            playRound();
-        };
+        resultsH4.innerText = "Sorry, you didn't win this round!";
+        computerWins++;
+        computerWinCount.innerText = "Computer Wins:" + computerWins;
+        userWinCount.innerText = "User Wins:" + userWins;
+    } else if (userWeapon == computerWeapon) {
+        resultsH4.innerText = "Tie! Play the round again!";
+    } else {
+        resultsH4.innerText = "Sorry an unexpected error has occurred!";
+        playRound();
+    };
+    assignComputerWeapon();
+    console.log(computerWeapon)
+};
 
-}
- *///playRound();
+
 //ensured that the two can compare effectively under all circumstances. now to loop or create a function to run five times and add a counter and then determine winner
-//
-
-/* function gamePlay () {
+function gamePlay() {
     playRound();
     console.log(userWins);
     console.log(computerWins);
@@ -72,5 +78,17 @@ btn.addEventListener('click', )
     alert(winner)
 }
 
+
+
+
+assignComputerWeapon();
+
+
+//NEED TO LISTEN FOR WHAT THE USER CHOCIE IS!!! (can be any button within the container!!)
+document.querySelector("#btn-container").addEventListener("click", assignUserWeapon);
+console.log(computerWeapon);
+// console.log(userWeapon);
+
+console.log(resultsH4)
+
 gamePlay();
- */
